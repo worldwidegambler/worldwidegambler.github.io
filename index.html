@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Website</title>
+    <link rel="icon" href="https://i.imgur.com/AQ78pR0.png" type="image/png">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        #intro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            background-color: black;
+            transition: opacity 1s ease;
+            position: absolute;
+            z-index: 2;
+        }
+        #content {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            background-color: white;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            position: absolute;
+            z-index: 1;
+        }
+        #new-screen {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            z-index: 3;
+        }
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .transparent-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background-color: rgba(255, 255, 255, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 15px;
+            z-index: 4;
+            flex-direction: column;
+        }
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            margin-bottom: 10px;
+        }
+        .text {
+            font-size: 50px;
+            color: gold;
+            text-align: center;
+            font-weight: bold;
+        }
+        .circle {
+            width: 60px;
+            height: 60px;
+            background-color: black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            z-index: 0;
+        }
+        .icon {
+            width: 50px;
+            height: auto;
+        }
+        .image-container {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="intro">
+        <p>respect yourself</p>
+    </div>
+    <div id="content">
+        <div class="circle"></div>
+        <div class="image-container">
+            <img src="https://imgur.com/SQy4xlP.png" alt="Folder Icon" class="icon" />
+        </div>
+    </div>
+    <div id="new-screen">
+        <video class="video-background" autoplay loop muted>
+            <source src="https://imgur.com/gGPkTUL.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="transparent-box">
+            <img src="https://i.imgur.com/6lh6cgS.gif" alt="Profile Picture" class="profile-picture" />
+            <div class="text">Flow</div>
+        </div>
+    </div>
+
+    <script>
+        document.body.addEventListener('click', function() {
+            document.getElementById('intro').style.opacity = '0';
+            setTimeout(function() {
+                document.getElementById('intro').style.display = 'none';
+                document.getElementById('content').style.display = 'flex';
+            }, 1000);
+        });
+
+        document.querySelector('.icon').addEventListener('click', function() {
+            document.getElementById('content').style.display = 'none';
+            document.getElementById('new-screen').style.display = 'block';
+        });
+
+        (function() {
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousedown', function(e) {
+                if (e.button === 2) {
+                    e.preventDefault();
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
